@@ -1,0 +1,17 @@
+@model PlanViewModel
+@{
+    ViewData["Title"] = "Delete Plan";
+}
+
+<div class="card border-danger">
+    <div class="card-body">
+        <h5 class="text-danger"><i class="bi bi-exclamation-triangle me-2"></i>Delete this plan?</h5>
+        <p class="mb-1"><strong>@Model.Name</strong> - @Model.Price.ToString("N0") EGP / @Model.DurationInDays days</p>
+        <p class="text-muted small">Plans with active subscriptions can't be deleted. Deactivate them instead.</p>
+
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-flex gap-2">
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

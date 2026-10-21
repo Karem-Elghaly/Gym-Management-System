@@ -1,0 +1,34 @@
+﻿@model PlanViewModel
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="Price" class="form-label">Price (EGP)</label>
+        <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
+        <span asp-validation-for="Price" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="DurationInDays" class="form-label">Duration (days)</label>
+        <input asp-for="DurationInDays" class="form-control" type="number" min="1" />
+        <span asp-validation-for="DurationInDays" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <div class="form-check form-switch">
+            <input asp-for="IsActive" class="form-check-input" />
+            <label asp-for="IsActive" class="form-check-label">Available for new subscriptions</label>
+        </div>
+    </div>
+</div>

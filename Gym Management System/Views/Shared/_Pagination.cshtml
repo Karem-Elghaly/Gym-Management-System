@@ -1,0 +1,26 @@
+﻿@* Model: PaginationInfo. ViewData["Action"] اسم الـ Action، و ViewData["Query"] باراميترات إضافية *@
+@model PaginationInfo
+
+@if (Model.TotalPages > 1)
+{
+    var extra = ViewData["Query"] as Dictionary<string, string?> ?? new();
+
+    <nav>
+        <ul class="pagination justify-content-center mb-0">
+            <li class="page-item @(Model.HasPrevious ? "" : "disabled")">
+                <a class="page-link" asp-action="@ViewData["Action"]" asp-all-route-data="@(new Dictionary<string, string?>(extra) { ["page"] = (Model.Page - 1).ToString() })">Previous</a>
+            </li>
+
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.Page ? "active" : "")">
+                    <a class="page-link" asp-action="@ViewData["Action"]" asp-all-route-data="@(new Dictionary<string, string?>(extra) { ["page"] = i.ToString() })">@i</a>
+                </li>
+            }
+
+            <li class="page-item @(Model.HasNext ? "" : "disabled")">
+                <a class="page-link" asp-action="@ViewData["Action"]" asp-all-route-data="@(new Dictionary<string, string?>(extra) { ["page"] = (Model.Page + 1).ToString() })">Next</a>
+            </li>
+        </ul>
+    </nav>
+}

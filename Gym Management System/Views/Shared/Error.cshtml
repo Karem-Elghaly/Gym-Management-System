@@ -1,0 +1,22 @@
+﻿@model ErrorViewModel
+@{
+    Layout = "_LoginLayout";
+    var code = ViewBag.StatusCode as int?;
+    ViewData["Title"] = "Error";
+}
+
+<div class="card login-card mx-auto text-center">
+    <div class="card-body p-5">
+        <div class="brand-icon bg-warning text-dark"><i class="bi bi-exclamation-triangle"></i></div>
+        <h4 class="fw-bold">@(code == 404 ? "Page not found" : "Something went wrong")</h4>
+        @if (code is not null)
+        {
+            <p class="text-muted mb-1">Status code: @code</p>
+        }
+        @if (Model.ShowRequestId)
+        {
+            <p class="small text-muted">Request ID: <code>@Model.RequestId</code></p>
+        }
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary mt-3">Back to Home</a>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+@model IReadOnlyList<AttendanceListItemViewModel>
+@{
+    ViewData["Title"] = "Attendance";
+    var date = (DateOnly)ViewData["Date"]!;
+}
+
+<div class="row g-3">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header bg-white fw-bold">Check in</div>
+            <div class="card-body">
+                <form asp-action="CheckIn" method="post">
+                    <label class="form-label">Member phone</label>
+                    <input name="Phone" class="form-control mb-3" maxlength="11" placeholder="01XXXXXXXXX" autofocus />
+                    <button class="btn btn-primary w-100"><i class="bi bi-box-arrow-in-right me-1"></i>Check in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <span class="fw-bold">Attendance - @date.ToString("yyyy-MM-dd") (@Model.Count)</span>
+                <form asp-action="Index" method="get" class="d-flex gap-2">
+                    <input type="date" name="date" value="@date.ToString("yyyy-MM-dd")" class="form-control form-control-sm" />
+                    <button class="btn btn-sm btn-outline-primary">Go</button>
+                </form>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="table-light"><tr><th>Member</th><th>In</th><th>Out</th><th></th></tr></thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr><td colspan="4" class="text-center text-muted py-4">No check-ins for this day.</td></tr>
+                        }
+                        @foreach (var a in Model)
+                        {
+                            <tr>
+                                <td class="fw-semibold">@a.MemberName</td>
+                                <td>@a.CheckInTime.ToLocalTime().ToString("HH:mm")</td>
+                                <td>@(a.CheckOutTime?.ToLocalTime().ToString("HH:mm") ?? "-")</td>
+                                <td class="text-end">
+                                    @if (a.IsInside)
+                                    {
+                                        <form asp-action="CheckOut" asp-route-id="@a.Id" method="post" class="d-inline">
+                                            <button class="btn btn-sm btn-outline-warning">Check out</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

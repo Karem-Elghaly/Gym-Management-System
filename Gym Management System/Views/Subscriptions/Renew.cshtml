@@ -1,0 +1,52 @@
+﻿@model SubscriptionRenewViewModel
+@{
+    ViewData["Title"] = "Renew Subscription";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+        @* معلومات للعرض بس *@
+        <div class="alert alert-light border">
+            <div><strong>Member:</strong> @Model.MemberName</div>
+            <div><strong>Current plan:</strong> @Model.CurrentPlanName</div>
+            <div><strong>Ends on:</strong> @Model.CurrentEndDate.ToString("yyyy-MM-dd")</div>
+            <div class="text-muted small mt-1">If the current subscription is still running, the new one starts the next day.</div>
+        </div>
+
+        <form asp-action="Renew" asp-route-id="@Model.SubscriptionId" method="post">
+            @* الحقول دي بترجع مع الفورم عشان لو حصل خطأ نعرض نفس المعلومات من غير Query جديد *@
+            <input type="hidden" asp-for="SubscriptionId" />
+            <input type="hidden" asp-for="MemberName" />
+            <input type="hidden" asp-for="CurrentPlanName" />
+            <input type="hidden" asp-for="CurrentEndDate" />
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="PlanId" class="form-label">Plan</label>
+                    <select asp-for="PlanId" asp-items="(SelectList)ViewBag.Plans" class="form-select">
+                        <option value="">-- Select plan --</option>
+                    </select>
+                    <span asp-validation-for="PlanId" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="InitialPayment" class="form-label">Initial payment (EGP)</label>
+                    <input asp-for="InitialPayment" class="form-control" type="number" step="0.01" min="0" />
+                    <span asp-validation-for="InitialPayment" class="text-danger small"></span>
+                </div>
+
+                <div class="col-md-3">
+                    <label asp-for="PaymentMethod" class="form-label">Payment method</label>
+                    <select asp-for="PaymentMethod" asp-items="Html.GetEnumSelectList<PaymentMethod>()" class="form-select"></select>
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-repeat me-1"></i>Renew</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

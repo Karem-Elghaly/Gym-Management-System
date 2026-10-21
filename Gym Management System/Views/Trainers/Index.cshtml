@@ -1,0 +1,42 @@
+@model IReadOnlyList<TrainerListItemViewModel>
+@{
+    ViewData["Title"] = "Trainers";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-3">
+            <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Add Trainer</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr><th>Name</th><th>Specialty</th><th>Phone</th><th>Upcoming classes</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr><td colspan="5" class="text-center text-muted py-4">No trainers yet.</td></tr>
+                    }
+                    @foreach (var t in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@t.FullName</td>
+                            <td>@t.Specialty</td>
+                            <td>@t.Phone</td>
+                            <td><span class="badge bg-primary-subtle text-primary">@t.UpcomingClassesCount</span></td>
+                            <td class="text-end text-nowrap">
+                                <a asp-action="Edit" asp-route-id="@t.Id" class="btn btn-sm btn-outline-primary" title="Edit"><i class="bi bi-pencil"></i></a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Delete" asp-route-id="@t.Id" class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

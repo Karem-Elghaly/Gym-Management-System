@@ -1,0 +1,59 @@
+﻿@* حقول الفورم بس (من غير <form>)، عشان نستخدمها في الإضافة والتعديل من غير تكرار *@
+@model MemberViewModel
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="FullName" class="form-label">Full name</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Phone" class="form-label"></label>
+        <input asp-for="Phone" class="form-control" maxlength="11" placeholder="01XXXXXXXXX" />
+        <span asp-validation-for="Phone" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" type="email" />
+        <span asp-validation-for="Email" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="DateOfBirth" class="form-label">Date of birth</label>
+        @* Tag Helper بيحول DateOnly لـ input type=date أوتوماتيك *@
+        <input asp-for="DateOfBirth" class="form-control" />
+        <span asp-validation-for="DateOfBirth" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="Gender" class="form-label"></label>
+        @* GetEnumSelectList بيعمل خيارات من الـ Enum، والـ option الفاضي عشان يبدأ من غير اختيار *@
+        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-select">
+            <option value="">-- Select --</option>
+        </select>
+        <span asp-validation-for="Gender" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="ImageFile" class="form-label">Photo (jpg, png, webp - max 2MB)</label>
+        <input asp-for="ImageFile" class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp" />
+        <span asp-validation-for="ImageFile" class="text-danger small"></span>
+
+        @* وقت التعديل بنعرض الصورة الحالية *@
+        @if (!string.IsNullOrEmpty(Model.ExistingImageName))
+        {
+            <div class="mt-2">
+                <img src="~/uploads/members/@Model.ExistingImageName" class="member-avatar" style="width:72px;height:72px" alt="Current photo" />
+                <span class="text-muted small ms-2">Leave empty to keep the current photo.</span>
+            </div>
+        }
+    </div>
+</div>

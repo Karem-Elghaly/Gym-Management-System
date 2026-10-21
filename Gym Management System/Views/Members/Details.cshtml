@@ -1,0 +1,79 @@
+﻿@model MemberDetailsViewModel
+@{
+    ViewData["Title"] = "Member Details";
+
+    // لون الـ Badge حسب حالة الاشتراك
+    string Badge(SubscriptionStatus s) => s switch
+    {
+        SubscriptionStatus.Active => "bg-success",
+        SubscriptionStatus.Frozen => "bg-info text-dark",
+        SubscriptionStatus.Expired => "bg-secondary",
+        _ => "bg-danger"
+    };
+}
+
+<div class="row g-3">
+    <div class="col-lg-4">
+        <div class="card text-center">
+            <div class="card-body">
+                @if (!string.IsNullOrEmpty(Model.ImageName))
+                {
+                    <img src="~/uploads/members/@Model.ImageName" class="rounded-circle mb-3" style="width:120px;height:120px;object-fit:cover" alt="" />
+                }
+                else
+                {
+                    <i class="bi bi-person-circle text-secondary" style="font-size:7rem"></i>
+                }
+                <h5 class="fw-bold mb-0">@Model.FullName</h5>
+                <div class="text-muted mb-3">@Model.Age years old</div>
+
+                <ul class="list-group list-group-flush text-start small">
+                    <li class="list-group-item"><i class="bi bi-telephone me-2"></i>@Model.Phone</li>
+                    <li class="list-group-item"><i class="bi bi-envelope me-2"></i>@(Model.Email ?? "-")</li>
+                    <li class="list-group-item"><i class="bi bi-gender-ambiguous me-2"></i>@Model.Gender</li>
+                    <li class="list-group-item"><i class="bi bi-cake2 me-2"></i>@Model.DateOfBirth.ToString("yyyy-MM-dd")</li>
+                    <li class="list-group-item"><i class="bi bi-geo-alt me-2"></i>@(Model.Address ?? "-")</li>
+                </ul>
+
+                <div class="mt-3 d-flex gap-2 justify-content-center">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-primary">Edit</a>
+                    <a asp-action="Index" class="btn btn-sm btn-outline-secondary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <span class="fw-bold">Subscriptions</span>
+                <a asp-controller="Subscriptions" asp-action="Create" class="btn btn-sm btn-outline-primary">New subscription</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-middle mb-0">
+                    <thead class="table-light">
+                        <tr><th>Plan</th><th>Start</th><th>End</th><th>Status</th><th>Price</th><th>Paid</th><th>Remaining</th></tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Subscriptions.Any())
+                        {
+                            <tr><td colspan="7" class="text-center text-muted py-4">No subscriptions yet.</td></tr>
+                        }
+                        @foreach (var s in Model.Subscriptions)
+                        {
+                            <tr>
+                                <td>@s.PlanName</td>
+                                <td>@s.StartDate.ToString("yyyy-MM-dd")</td>
+                                <td>@s.EndDate.ToString("yyyy-MM-dd")</td>
+                                <td><span class="badge @Badge(s.Status)">@s.Status</span></td>
+                                <td>@s.PriceAtPurchase.ToString("N0")</td>
+                                <td>@s.TotalPaid.ToString("N0")</td>
+                                <td class="@(s.Remaining > 0 ? "text-danger fw-semibold" : "")">@s.Remaining.ToString("N0")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

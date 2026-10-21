@@ -1,0 +1,74 @@
+﻿@model PagedResult<SubscriptionListItemViewModel>
+@{
+    ViewData["Title"] = "Subscriptions";
+    var current = ViewData["Status"] as SubscriptionStatus?;
+
+    // بيحافظ على الفلتر وإحنا بنقلب بين الصفحات
+    ViewData["Action"] = "Index";
+    ViewData["Query"] = new Dictionary<string, string?> { ["status"] = current?.ToString() };
+
+    string Badge(SubscriptionStatus s) => s switch
+    {
+        SubscriptionStatus.Active => "bg-success",
+        SubscriptionStatus.Frozen => "bg-info text-dark",
+        SubscriptionStatus.Expired => "bg-secondary",
+        _ => "bg-danger"
+    };
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex flex-wrap justify-content-between gap-2 mb-3">
+            @* تبويبات الفلتر بالحالة *@
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a asp-action="Index" class="nav-link @(current is null ? "active" : "")">All</a></li>
+                @foreach (var s in Enum.GetValues<SubscriptionStatus>())
+                {
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-route-status="@s" class="nav-link @(current == s ? "active" : "")">@s</a>
+                    </li>
+                }
+            </ul>
+
+            <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>New Subscription</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr><th>Member</th><th>Plan</th><th>Start</th><th>End</th><th>Status</th><th>Price</th><th>Remaining</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Items.Any())
+                    {
+                        <tr><td colspan="8" class="text-center text-muted py-4">No subscriptions found.</td></tr>
+                    }
+                    @foreach (var s in Model.Items)
+                    {
+                        <tr>
+                            <td><a asp-controller="Members" asp-action="Details" asp-route-id="@s.MemberId" class="text-decoration-none fw-semibold">@s.MemberName</a></td>
+                            <td>@s.PlanName</td>
+                            <td>@s.StartDate.ToString("yyyy-MM-dd")</td>
+                            <td>@s.EndDate.ToString("yyyy-MM-dd")</td>
+                            <td><span class="badge @Badge(s.Status)">@s.Status</span></td>
+                            <td>@s.PriceAtPurchase.ToString("N0")</td>
+                            <td class="@(s.Remaining > 0 ? "text-danger fw-semibold" : "text-success")">@s.Remaining.ToString("N0")</td>
+                            <td class="text-end text-nowrap">
+                                <a asp-action="Details" asp-route-id="@s.Id" class="btn btn-sm btn-outline-secondary" title="Details"><i class="bi bi-eye"></i></a>
+                                @if (s.Status is SubscriptionStatus.Active or SubscriptionStatus.Expired)
+                                {
+                                    <a asp-action="Renew" asp-route-id="@s.Id" class="btn btn-sm btn-outline-primary" title="Renew"><i class="bi bi-arrow-repeat"></i></a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="text-muted small">Total: @Model.TotalCount</span>
+            <partial name="_Pagination" model="Model.Info" />
+        </div>
+    </div>
+</div>

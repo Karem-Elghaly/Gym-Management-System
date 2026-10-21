@@ -1,0 +1,40 @@
+﻿@model LoginViewModel
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Login";
+}
+
+<div class="card login-card mx-auto">
+    <div class="card-body p-4 p-md-5">
+        <div class="brand-icon"><i class="bi bi-heart-pulse"></i></div>
+        <h4 class="text-center fw-bold mb-1">Gym System</h4>
+        <p class="text-center text-muted mb-4">Sign in to continue</p>
+
+        @* أخطاء عامة (زي: Invalid email or password) *@
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+
+        <form asp-action="Login" method="post">
+            @* returnUrl بيتبعت مع الفورم عشان نرجعه لصفحته بعد الدخول *@
+            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" autocomplete="username" autofocus />
+                <span asp-validation-for="Email" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="text-danger small"></span>
+            </div>
+
+            <div class="form-check mb-4">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2">Sign in</button>
+        </form>
+    </div>
+</div>

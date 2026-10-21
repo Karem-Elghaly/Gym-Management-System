@@ -1,0 +1,18 @@
+@model ClassViewModel
+@{
+    ViewData["Title"] = "Edit Class";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small"></div>
+        <form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+            <input type="hidden" asp-for="Id" />
+            <partial name="_ClassForm" model="Model" />
+            <div class="mt-4 d-flex gap-2">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg me-1"></i>Update</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

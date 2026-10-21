@@ -1,0 +1,45 @@
+@model IReadOnlyList<PlanListItemViewModel>
+@{
+    ViewData["Title"] = "Plans";
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-end mb-3">
+            <a asp-action="Create" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Add Plan</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr><th>Name</th><th>Price</th><th>Duration</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr><td colspan="5" class="text-center text-muted py-4">No plans yet.</td></tr>
+                    }
+                    @foreach (var p in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@p.Name</td>
+                            <td>@p.Price.ToString("N0") EGP</td>
+                            <td>@p.DurationInDays days</td>
+                            <td><span class="badge @(p.IsActive ? "bg-success" : "bg-secondary")">@(p.IsActive ? "Active" : "Inactive")</span></td>
+                            <td class="text-end text-nowrap">
+                                <form asp-action="Toggle" asp-route-id="@p.Id" method="post" class="d-inline">
+                                    <button class="btn btn-sm btn-outline-warning" title="Activate / Deactivate"><i class="bi bi-power"></i></button>
+                                </form>
+                                <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-sm btn-outline-primary" title="Edit"><i class="bi bi-pencil"></i></a>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="Delete" asp-route-id="@p.Id" class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

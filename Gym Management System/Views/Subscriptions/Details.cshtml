@@ -1,0 +1,71 @@
+﻿@model SubscriptionListItemViewModel
+@{
+    ViewData["Title"] = "Subscription Details";
+
+    string Badge(SubscriptionStatus s) => s switch
+    {
+        SubscriptionStatus.Active => "bg-success",
+        SubscriptionStatus.Frozen => "bg-info text-dark",
+        SubscriptionStatus.Expired => "bg-secondary",
+        _ => "bg-danger"
+    };
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+                <h5 class="fw-bold mb-1">
+                    <a asp-controller="Members" asp-action="Details" asp-route-id="@Model.MemberId" class="text-decoration-none">@Model.MemberName</a>
+                </h5>
+                <span class="text-muted">@Model.PlanName</span>
+            </div>
+            <span class="badge fs-6 @Badge(Model.Status)">@Model.Status</span>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-sm-6 col-lg-3"><div class="text-muted small">Start</div><div class="fw-semibold">@Model.StartDate.ToString("yyyy-MM-dd")</div></div>
+            <div class="col-sm-6 col-lg-3"><div class="text-muted small">End</div><div class="fw-semibold">@Model.EndDate.ToString("yyyy-MM-dd")</div></div>
+            <div class="col-sm-6 col-lg-2"><div class="text-muted small">Price</div><div class="fw-semibold">@Model.PriceAtPurchase.ToString("N0") EGP</div></div>
+            <div class="col-sm-6 col-lg-2"><div class="text-muted small">Paid</div><div class="fw-semibold text-success">@Model.TotalPaid.ToString("N0") EGP</div></div>
+            <div class="col-sm-6 col-lg-2"><div class="text-muted small">Remaining</div><div class="fw-semibold @(Model.Remaining > 0 ? "text-danger" : "")">@Model.Remaining.ToString("N0") EGP</div></div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2">
+            @if (Model.Status is SubscriptionStatus.Active or SubscriptionStatus.Expired)
+            {
+                <a asp-action="Renew" asp-route-id="@Model.Id" class="btn btn-primary"><i class="bi bi-arrow-repeat me-1"></i>Renew</a>
+            }
+
+            @if (Model.Status == SubscriptionStatus.Active)
+            {
+                <form asp-action="Freeze" asp-route-id="@Model.Id" method="post">
+                    <button class="btn btn-info"><i class="bi bi-snow me-1"></i>Freeze</button>
+                </form>
+            }
+
+            @if (Model.Status == SubscriptionStatus.Frozen)
+            {
+                <form asp-action="Unfreeze" asp-route-id="@Model.Id" method="post">
+                    <button class="btn btn-success"><i class="bi bi-play-fill me-1"></i>Unfreeze</button>
+                </form>
+            }
+
+            @if (Model.Remaining > 0 && Model.Status != SubscriptionStatus.Cancelled)
+            {
+                @* هيشتغل لما نكتب PaymentsController *@
+                <a asp-controller="Payments" asp-action="Create" asp-route-subscriptionId="@Model.Id" class="btn btn-outline-success"><i class="bi bi-cash-coin me-1"></i>Add payment</a>
+            }
+
+            @if (User.IsInRole("Admin") && Model.Status != SubscriptionStatus.Cancelled)
+            {
+                @* confirm بسيط في المتصفح قبل الإلغاء *@
+                <form asp-action="Cancel" asp-route-id="@Model.Id" method="post" onsubmit="return confirm('Cancel this subscription?');">
+                    <button class="btn btn-outline-danger"><i class="bi bi-x-circle me-1"></i>Cancel subscription</button>
+                </form>
+            }
+
+            <a asp-action="Index" class="btn btn-outline-secondary ms-auto">Back</a>
+        </div>
+    </div>
+</div>
