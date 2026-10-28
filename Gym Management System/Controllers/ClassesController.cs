@@ -50,7 +50,14 @@ public class ClassesController : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-        var model = new ClassViewModel { MaxCapacity = 20 };
+        // قيم افتراضية جاهزة: بكرة من 6 المغرب لـ 7، والموظف بيعدلها لو عايز
+        var model = new ClassViewModel
+        {
+            MaxCapacity = 20,
+            ClassDate = DateOnly.FromDateTime(DateTime.Now.AddDays(1)),
+            StartTimeOfDay = new TimeOnly(18, 0),
+            EndTimeOfDay = new TimeOnly(19, 0)
+        };
         await LoadTrainersAsync(model.TrainerId);
         return View(model);
     }
@@ -67,6 +74,9 @@ public class ClassesController : Controller
             await LoadTrainersAsync(model.TrainerId);
             return View(model);
         }
+
+        // بعد ما الفاليديشن نجح ندمج التاريخ مع الأوقات قبل ما نبعت للـ Service
+        model.ComposeTimes();
 
         try
         {
@@ -89,6 +99,8 @@ public class ClassesController : Controller
     public async Task<IActionResult> Edit(int id)
     {
         var model = await _service.GetForEditAsync(id);
+        // نفصل التاريخ والوقت الكاملين لـ 3 خانات عشان تظهر في الفورم
+        model.SplitTimes();
         await LoadTrainersAsync(model.TrainerId);
         return View(model);
     }
@@ -107,6 +119,8 @@ public class ClassesController : Controller
             await LoadTrainersAsync(model.TrainerId);
             return View(model);
         }
+
+        model.ComposeTimes();
 
         try
         {

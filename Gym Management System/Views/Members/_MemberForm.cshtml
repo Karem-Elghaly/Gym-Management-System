@@ -1,5 +1,4 @@
-﻿@* حقول الفورم بس (من غير <form>)، عشان نستخدمها في الإضافة والتعديل من غير تكرار *@
-@model MemberViewModel
+﻿@model MemberViewModel
 
 <div class="row g-3">
     <div class="col-md-6">
@@ -22,14 +21,12 @@
 
     <div class="col-md-3">
         <label asp-for="DateOfBirth" class="form-label">Date of birth</label>
-        @* Tag Helper بيحول DateOnly لـ input type=date أوتوماتيك *@
         <input asp-for="DateOfBirth" class="form-control" />
         <span asp-validation-for="DateOfBirth" class="text-danger small"></span>
     </div>
 
     <div class="col-md-3">
         <label asp-for="Gender" class="form-label"></label>
-        @* GetEnumSelectList بيعمل خيارات من الـ Enum، والـ option الفاضي عشان يبدأ من غير اختيار *@
         <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-select">
             <option value="">-- Select --</option>
         </select>
@@ -47,7 +44,6 @@
         <input asp-for="ImageFile" class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp" />
         <span asp-validation-for="ImageFile" class="text-danger small"></span>
 
-        @* وقت التعديل بنعرض الصورة الحالية *@
         @if (!string.IsNullOrEmpty(Model.ExistingImageName))
         {
             <div class="mt-2">

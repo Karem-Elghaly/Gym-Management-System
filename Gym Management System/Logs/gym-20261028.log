@@ -1,0 +1,234 @@
+2026-10-28 08:30:18.238 +03:00 [INF] Expiry job finished. 0 subscriptions expired
+2026-10-28 08:30:19.177 +03:00 [INF] HTTP GET / responded 302 in 51.3117 ms
+2026-10-28 08:30:19.312 +03:00 [INF] HTTP GET /Account/Login responded 200 in 108.2950 ms
+2026-10-28 08:53:42.587 +03:00 [INF] Expiry job finished. 0 subscriptions expired
+2026-10-28 08:53:43.466 +03:00 [INF] HTTP GET / responded 302 in 46.2389 ms
+2026-10-28 08:53:43.598 +03:00 [INF] HTTP GET /Account/Login responded 200 in 109.0116 ms
+2026-10-28 08:53:43.639 +03:00 [INF] HTTP GET /css/site.css responded 200 in 11.7043 ms
+2026-10-28 08:54:20.140 +03:00 [INF] User admin@gym.com logged in
+2026-10-28 08:54:20.145 +03:00 [INF] HTTP POST /Account/Login responded 302 in 254.4455 ms
+2026-10-28 08:54:20.286 +03:00 [INF] HTTP GET / responded 200 in 132.9763 ms
+2026-10-28 08:54:20.320 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.7579 ms
+2026-10-28 08:54:24.159 +03:00 [INF] HTTP GET /Classes responded 200 in 74.9005 ms
+2026-10-28 08:54:26.697 +03:00 [INF] HTTP GET /Members responded 200 in 110.6330 ms
+2026-10-28 08:54:28.908 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 73.7231 ms
+2026-10-28 08:54:30.362 +03:00 [INF] HTTP GET /Payments responded 200 in 38.6605 ms
+2026-10-28 08:54:31.693 +03:00 [INF] HTTP GET /Attendance responded 200 in 29.7603 ms
+2026-10-28 08:54:33.292 +03:00 [INF] HTTP GET /Trainers responded 200 in 29.0615 ms
+2026-10-28 08:54:34.969 +03:00 [INF] HTTP GET /Plans responded 200 in 23.7445 ms
+2026-10-28 08:54:43.150 +03:00 [INF] HTTP GET /Account/CreateUser responded 200 in 23.3014 ms
+2026-10-28 08:54:58.025 +03:00 [INF] HTTP GET /Plans responded 200 in 6.6893 ms
+2026-10-28 08:54:58.062 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.2501 ms
+2026-10-28 08:54:58.905 +03:00 [INF] HTTP GET /Members responded 200 in 5.8651 ms
+2026-10-28 08:55:01.774 +03:00 [INF] HTTP GET /Members/Create responded 200 in 28.9436 ms
+2026-10-28 09:01:44.044 +03:00 [FTL] Application terminated unexpectedly
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in D:\MY PROJECT\Gym Management System\Gym Management System\Program.cs:line 31
+2026-10-28 09:02:23.376 +03:00 [INF] 1 subscriptions marked as expired
+2026-10-28 09:02:23.406 +03:00 [INF] Expiry job finished. 1 subscriptions expired
+2026-10-28 09:02:24.039 +03:00 [INF] HTTP GET / responded 302 in 51.6766 ms
+2026-10-28 09:02:24.169 +03:00 [INF] HTTP GET /Account/Login responded 200 in 98.3046 ms
+2026-10-28 09:02:24.206 +03:00 [INF] HTTP GET /css/site.css responded 304 in 3.8085 ms
+2026-10-28 09:02:57.386 +03:00 [INF] User admin@gym.com logged in
+2026-10-28 09:02:57.392 +03:00 [INF] HTTP POST /Account/Login responded 302 in 208.8750 ms
+2026-10-28 09:02:57.532 +03:00 [INF] HTTP GET / responded 200 in 130.6687 ms
+2026-10-28 09:03:09.106 +03:00 [INF] HTTP GET /Classes responded 200 in 84.5592 ms
+2026-10-28 09:03:27.181 +03:00 [INF] HTTP GET /Plans responded 200 in 41.7454 ms
+2026-10-28 09:03:28.480 +03:00 [INF] HTTP GET /Plans/Create responded 200 in 29.1592 ms
+2026-10-28 09:04:28.235 +03:00 [INF] Plan 4 created
+2026-10-28 09:04:28.238 +03:00 [INF] HTTP POST /Plans/Create responded 302 in 39.7008 ms
+2026-10-28 09:04:28.251 +03:00 [INF] HTTP GET /Plans responded 200 in 5.9358 ms
+2026-10-28 09:04:28.289 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.4171 ms
+2026-10-28 09:04:31.848 +03:00 [INF] HTTP GET /Plans/Create responded 200 in 3.2986 ms
+2026-10-28 09:05:18.951 +03:00 [INF] Plan 5 created
+2026-10-28 09:05:18.953 +03:00 [INF] HTTP POST /Plans/Create responded 302 in 8.7702 ms
+2026-10-28 09:05:18.963 +03:00 [INF] HTTP GET /Plans responded 200 in 3.1869 ms
+2026-10-28 09:05:34.299 +03:00 [INF] HTTP GET /Trainers responded 200 in 32.7007 ms
+2026-10-28 09:05:36.155 +03:00 [INF] HTTP GET /Trainers/Create responded 200 in 16.5870 ms
+2026-10-28 09:06:15.545 +03:00 [INF] Trainer 4 created
+2026-10-28 09:06:15.547 +03:00 [INF] HTTP POST /Trainers/Create responded 302 in 14.4787 ms
+2026-10-28 09:06:15.558 +03:00 [INF] HTTP GET /Trainers responded 200 in 3.5977 ms
+2026-10-28 09:06:15.592 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.1735 ms
+2026-10-28 09:06:25.567 +03:00 [INF] HTTP GET /Trainers/Edit/1 responded 200 in 21.8517 ms
+2026-10-28 09:06:54.363 +03:00 [INF] Trainer 1 updated
+2026-10-28 09:06:54.364 +03:00 [INF] HTTP POST /Trainers/Edit/1 responded 302 in 13.1044 ms
+2026-10-28 09:06:54.376 +03:00 [INF] HTTP GET /Trainers responded 200 in 4.5649 ms
+2026-10-28 09:06:58.845 +03:00 [INF] HTTP GET /Trainers/Create responded 200 in 2.2727 ms
+2026-10-28 09:08:03.863 +03:00 [INF] Trainer 5 created
+2026-10-28 09:08:03.865 +03:00 [INF] HTTP POST /Trainers/Create responded 302 in 6.5177 ms
+2026-10-28 09:08:03.876 +03:00 [INF] HTTP GET /Trainers responded 200 in 3.3138 ms
+2026-10-28 09:08:03.917 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.1714 ms
+2026-10-28 09:08:18.345 +03:00 [INF] HTTP GET /Trainers/Edit/1 responded 200 in 4.2051 ms
+2026-10-28 09:08:34.730 +03:00 [INF] Trainer 1 updated
+2026-10-28 09:08:34.732 +03:00 [INF] HTTP POST /Trainers/Edit/1 responded 302 in 10.4491 ms
+2026-10-28 09:08:34.741 +03:00 [INF] HTTP GET /Trainers responded 200 in 2.5920 ms
+2026-10-28 09:08:43.199 +03:00 [INF] HTTP GET /Trainers/Edit/5 responded 200 in 3.0399 ms
+2026-10-28 09:09:29.632 +03:00 [INF] Trainer 5 updated
+2026-10-28 09:09:29.633 +03:00 [INF] HTTP POST /Trainers/Edit/5 responded 302 in 8.8066 ms
+2026-10-28 09:09:29.644 +03:00 [INF] HTTP GET /Trainers responded 200 in 4.3162 ms
+2026-10-28 09:09:34.784 +03:00 [INF] HTTP GET /Trainers/Create responded 200 in 2.1617 ms
+2026-10-28 09:10:52.872 +03:00 [INF] Trainer 6 created
+2026-10-28 09:10:52.874 +03:00 [INF] HTTP POST /Trainers/Create responded 302 in 5.7928 ms
+2026-10-28 09:10:52.884 +03:00 [INF] HTTP GET /Trainers responded 200 in 2.8285 ms
+2026-10-28 09:10:52.926 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.2439 ms
+2026-10-28 09:11:00.454 +03:00 [INF] HTTP GET /Members responded 200 in 96.2718 ms
+2026-10-28 09:11:52.993 +03:00 [INF] HTTP GET /Members/Create responded 200 in 32.7750 ms
+2026-10-28 09:14:11.512 +03:00 [INF] Member 10 created
+2026-10-28 09:14:11.514 +03:00 [INF] HTTP POST /Members/Create responded 302 in 40.6660 ms
+2026-10-28 09:14:11.541 +03:00 [INF] HTTP GET /Members responded 200 in 20.5655 ms
+2026-10-28 09:14:11.574 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.1371 ms
+2026-10-28 09:14:17.982 +03:00 [INF] HTTP GET /Members/Details/10 responded 200 in 69.8729 ms
+2026-10-28 09:14:21.997 +03:00 [INF] HTTP GET /Members responded 200 in 7.4807 ms
+2026-10-28 09:14:25.803 +03:00 [INF] HTTP GET /Members/Create responded 200 in 3.7707 ms
+2026-10-28 09:16:06.464 +03:00 [INF] Member 11 created
+2026-10-28 09:16:06.465 +03:00 [INF] HTTP POST /Members/Create responded 302 in 8.3590 ms
+2026-10-28 09:16:06.479 +03:00 [INF] HTTP GET /Members responded 200 in 7.5840 ms
+2026-10-28 09:16:21.916 +03:00 [INF] HTTP GET /Members/Create responded 200 in 3.0352 ms
+2026-10-28 09:18:58.927 +03:00 [INF] Member 12 created
+2026-10-28 09:18:58.928 +03:00 [INF] HTTP POST /Members/Create responded 302 in 6.3493 ms
+2026-10-28 09:18:58.944 +03:00 [INF] HTTP GET /Members responded 200 in 8.5038 ms
+2026-10-28 09:18:58.987 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.1300 ms
+2026-10-28 09:19:05.130 +03:00 [INF] HTTP GET /Members/Edit/11 responded 200 in 27.4412 ms
+2026-10-28 09:19:10.901 +03:00 [INF] Member 11 updated
+2026-10-28 09:19:10.903 +03:00 [INF] HTTP POST /Members/Edit/11 responded 302 in 14.5853 ms
+2026-10-28 09:19:10.914 +03:00 [INF] HTTP GET /Members responded 200 in 4.7648 ms
+2026-10-28 09:19:14.222 +03:00 [INF] HTTP GET /Members/Edit/10 responded 200 in 4.2976 ms
+2026-10-28 09:19:20.311 +03:00 [INF] Member 10 updated
+2026-10-28 09:19:20.313 +03:00 [INF] HTTP POST /Members/Edit/10 responded 302 in 9.7457 ms
+2026-10-28 09:19:20.325 +03:00 [INF] HTTP GET /Members responded 200 in 4.5025 ms
+2026-10-28 09:19:24.015 +03:00 [INF] HTTP GET /Members/Create responded 200 in 1.9522 ms
+2026-10-28 09:22:31.768 +03:00 [INF] Member 13 created
+2026-10-28 09:22:31.769 +03:00 [INF] HTTP POST /Members/Create responded 302 in 73.0741 ms
+2026-10-28 09:22:31.797 +03:00 [INF] HTTP GET /Members responded 200 in 21.9599 ms
+2026-10-28 09:22:31.825 +03:00 [INF] HTTP GET /css/site.css responded 304 in 0.1165 ms
+2026-10-28 09:22:36.820 +03:00 [INF] HTTP GET /Members/Create responded 200 in 1.7988 ms
+2026-10-28 09:23:45.139 +03:00 [INF] Member 14 created
+2026-10-28 09:23:45.141 +03:00 [INF] HTTP POST /Members/Create responded 302 in 7.1488 ms
+2026-10-28 09:23:45.155 +03:00 [INF] HTTP GET /Members responded 200 in 5.1842 ms
+2026-10-28 09:24:24.399 +03:00 [INF] HTTP GET /Members/Details/12 responded 200 in 20.4045 ms
+2026-10-28 09:24:27.057 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 88.8340 ms
+2026-10-28 09:24:47.803 +03:00 [INF] Subscription 8 created for member 11 on plan 1
+2026-10-28 09:24:47.806 +03:00 [INF] HTTP POST /Subscriptions/Create responded 302 in 42.3545 ms
+2026-10-28 09:24:47.856 +03:00 [INF] HTTP GET /Subscriptions/Details/8 responded 200 in 43.9367 ms
+2026-10-28 09:24:51.776 +03:00 [INF] HTTP GET /Subscriptions/Renew/8 responded 200 in 24.8035 ms
+2026-10-28 09:24:59.994 +03:00 [INF] HTTP GET /Subscriptions/Details/8 responded 200 in 4.9443 ms
+2026-10-28 09:25:05.414 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 38.3822 ms
+2026-10-28 09:25:14.563 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 5.9990 ms
+2026-10-28 09:25:17.066 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 4.4173 ms
+2026-10-28 09:25:18.631 +03:00 [INF] HTTP GET /Subscriptions/Details/8 responded 200 in 3.4791 ms
+2026-10-28 09:25:19.624 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 4.2584 ms
+2026-10-28 09:25:41.741 +03:00 [INF] Subscription 9 created for member 14 on plan 4
+2026-10-28 09:25:41.743 +03:00 [INF] HTTP POST /Subscriptions/Create responded 302 in 10.8287 ms
+2026-10-28 09:25:41.751 +03:00 [INF] HTTP GET /Subscriptions/Details/9 responded 200 in 2.3354 ms
+2026-10-28 09:25:48.113 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 3.9204 ms
+2026-10-28 09:25:50.746 +03:00 [INF] HTTP GET /Members/Details/12 responded 200 in 3.3161 ms
+2026-10-28 09:25:53.060 +03:00 [INF] HTTP GET /Members responded 200 in 4.5581 ms
+2026-10-28 13:36:00.426 +03:00 [INF] Expiry job finished. 0 subscriptions expired
+2026-10-28 13:36:01.544 +03:00 [INF] HTTP GET / responded 302 in 53.0676 ms
+2026-10-28 13:36:01.710 +03:00 [INF] HTTP GET /Account/Login responded 200 in 138.1475 ms
+2026-10-28 13:36:01.742 +03:00 [INF] HTTP GET /css/site.css responded 304 in 3.8721 ms
+2026-10-28 13:36:29.868 +03:00 [INF] User admin@gym.com logged in
+2026-10-28 13:36:29.873 +03:00 [INF] HTTP POST /Account/Login responded 302 in 260.4965 ms
+2026-10-28 13:36:30.024 +03:00 [INF] HTTP GET / responded 200 in 143.4190 ms
+2026-10-28 13:36:45.080 +03:00 [INF] HTTP GET /Classes responded 200 in 86.3145 ms
+2026-10-28 13:36:50.415 +03:00 [INF] HTTP GET /Members responded 200 in 116.8683 ms
+2026-10-28 13:37:13.476 +03:00 [INF] HTTP GET /Members responded 200 in 17.9644 ms
+2026-10-28 13:37:19.188 +03:00 [INF] HTTP GET /Members responded 200 in 34.7974 ms
+2026-10-28 13:37:35.469 +03:00 [INF] HTTP GET /Members/Create responded 200 in 46.7318 ms
+2026-10-28 13:38:39.690 +03:00 [INF] HTTP GET /Members responded 200 in 5.5995 ms
+2026-10-28 13:38:41.117 +03:00 [INF] HTTP GET /Members/Create responded 200 in 6.3690 ms
+2026-10-28 13:39:40.471 +03:00 [INF] Member 15 created
+2026-10-28 13:39:40.474 +03:00 [INF] HTTP POST /Members/Create responded 302 in 176.9714 ms
+2026-10-28 13:39:40.489 +03:00 [INF] HTTP GET /Members responded 200 in 7.6026 ms
+2026-10-28 13:39:43.593 +03:00 [INF] HTTP GET /Members/Details/15 responded 200 in 64.6199 ms
+2026-10-28 13:39:46.072 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 60.1030 ms
+2026-10-28 13:39:51.604 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 25.5873 ms
+2026-10-28 13:39:54.627 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 8.3748 ms
+2026-10-28 13:39:57.190 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 5.6392 ms
+2026-10-28 13:39:58.901 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 4.7148 ms
+2026-10-28 13:39:59.739 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 6.1543 ms
+2026-10-28 13:40:02.349 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 97.2250 ms
+2026-10-28 13:40:28.009 +03:00 [INF] Subscription 10 created for member 15 on plan 2
+2026-10-28 13:40:28.012 +03:00 [INF] HTTP POST /Subscriptions/Create responded 302 in 201.8904 ms
+2026-10-28 13:40:28.060 +03:00 [INF] HTTP GET /Subscriptions/Details/10 responded 200 in 41.2525 ms
+2026-10-28 13:40:32.930 +03:00 [INF] HTTP GET /Subscriptions/Renew/10 responded 200 in 29.9517 ms
+2026-10-28 13:40:34.976 +03:00 [INF] HTTP GET /Subscriptions/Details/10 responded 200 in 4.1187 ms
+2026-10-28 13:40:38.659 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 6.9158 ms
+2026-10-28 13:40:39.496 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 7.2139 ms
+2026-10-28 13:40:48.516 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 5.8278 ms
+2026-10-28 13:41:07.856 +03:00 [INF] Subscription 11 created for member 7 on plan 5
+2026-10-28 13:41:07.858 +03:00 [INF] HTTP POST /Subscriptions/Create responded 302 in 14.3004 ms
+2026-10-28 13:41:07.869 +03:00 [INF] HTTP GET /Subscriptions/Details/11 responded 200 in 3.2082 ms
+2026-10-28 13:41:09.867 +03:00 [INF] HTTP GET /Subscriptions/Create responded 200 in 5.2724 ms
+2026-10-28 13:41:10.400 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 6.9132 ms
+2026-10-28 13:41:13.964 +03:00 [INF] HTTP GET /Payments responded 200 in 48.3914 ms
+2026-10-28 13:41:16.951 +03:00 [INF] HTTP GET /Payments/Create responded 200 in 43.9834 ms
+2026-10-28 13:42:22.092 +03:00 [INF] Payment 12 of 200 recorded for subscription 7
+2026-10-28 13:42:22.094 +03:00 [INF] HTTP POST /Payments/Create responded 302 in 30.9021 ms
+2026-10-28 13:42:22.141 +03:00 [INF] HTTP GET /Payments responded 200 in 4.7775 ms
+2026-10-28 13:42:30.380 +03:00 [INF] HTTP GET /Attendance responded 200 in 32.8592 ms
+2026-10-28 13:42:32.132 +03:00 [INF] HTTP GET /Trainers responded 200 in 36.8144 ms
+2026-10-28 13:42:34.045 +03:00 [INF] HTTP GET /Plans responded 200 in 28.0752 ms
+2026-10-28 13:42:36.076 +03:00 [INF] HTTP GET /Plans responded 200 in 20.1467 ms
+2026-10-28 13:42:38.473 +03:00 [INF] HTTP GET /Classes responded 200 in 6.7134 ms
+2026-10-28 13:43:28.177 +03:00 [INF] HTTP GET /Classes/Create responded 200 in 36.4941 ms
+2026-10-28 13:47:45.830 +03:00 [INF] HTTP GET /Members responded 200 in 5.7428 ms
+2026-10-28 13:47:46.352 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 6.0135 ms
+2026-10-28 13:47:47.521 +03:00 [INF] HTTP GET /Payments responded 200 in 6.1238 ms
+2026-10-28 13:47:50.005 +03:00 [INF] HTTP GET /Attendance responded 200 in 3.2824 ms
+2026-10-28 13:59:17.156 +03:00 [INF] Expiry job finished. 0 subscriptions expired
+2026-10-28 13:59:18.954 +03:00 [INF] HTTP GET / responded 302 in 69.3714 ms
+2026-10-28 13:59:19.126 +03:00 [INF] HTTP GET /Account/Login responded 200 in 143.5243 ms
+2026-10-28 14:01:15.589 +03:00 [INF] User admin@gym.com logged in
+2026-10-28 14:01:15.595 +03:00 [INF] HTTP POST /Account/Login responded 302 in 258.2645 ms
+2026-10-28 14:01:15.761 +03:00 [INF] HTTP GET / responded 200 in 158.2455 ms
+2026-10-28 14:01:17.963 +03:00 [INF] HTTP GET /Classes responded 200 in 83.9396 ms
+2026-10-28 14:01:20.452 +03:00 [INF] HTTP GET /Classes/Create responded 200 in 122.9947 ms
+2026-10-28 14:06:00.074 +03:00 [INF] HTTP GET /Members responded 200 in 142.9456 ms
+2026-10-28 14:06:00.101 +03:00 [INF] HTTP GET /css/site.css responded 304 in 5.2101 ms
+2026-10-28 14:06:00.740 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 128.3318 ms
+2026-10-28 14:06:01.669 +03:00 [INF] HTTP GET /Trainers responded 200 in 33.1874 ms
+2026-10-28 14:06:02.076 +03:00 [INF] HTTP GET /Plans responded 200 in 24.9556 ms
+2026-10-28 14:06:03.570 +03:00 [INF] HTTP GET /Plans/Create responded 200 in 27.7922 ms
+2026-10-28 14:08:40.529 +03:00 [INF] HTTP GET /Attendance responded 200 in 29.9241 ms
+2026-10-28 14:08:44.783 +03:00 [INF] HTTP POST /Attendance/CheckIn responded 302 in 280.2614 ms
+2026-10-28 14:08:44.795 +03:00 [INF] HTTP GET /Attendance responded 200 in 5.8341 ms
+2026-10-28 14:08:49.996 +03:00 [INF] HTTP POST /Attendance/CheckIn responded 302 in 78.5575 ms
+2026-10-28 14:08:50.007 +03:00 [INF] HTTP GET /Attendance responded 200 in 3.9682 ms
+2026-10-28 14:08:55.741 +03:00 [INF] HTTP POST /Attendance/CheckIn responded 302 in 60.0742 ms
+2026-10-28 14:08:55.750 +03:00 [INF] HTTP GET /Attendance responded 200 in 2.7111 ms
+2026-10-28 14:09:00.596 +03:00 [INF] HTTP POST /Attendance/CheckIn responded 302 in 67.5244 ms
+2026-10-28 14:09:00.605 +03:00 [INF] HTTP GET /Attendance responded 200 in 2.6810 ms
+2026-10-28 14:09:04.623 +03:00 [INF] HTTP POST /Attendance/CheckIn responded 302 in 63.8361 ms
+2026-10-28 14:09:04.633 +03:00 [INF] HTTP GET /Attendance responded 200 in 2.9503 ms
+2026-10-28 14:09:12.611 +03:00 [INF] HTTP GET /Account/CreateUser responded 200 in 25.8878 ms
+2026-10-28 14:09:49.336 +03:00 [INF] HTTP POST /Account/CreateUser responded 200 in 20.6617 ms
+2026-10-28 14:10:01.229 +03:00 [INF] User karemelghaley27@gmail.com created with role Admin
+2026-10-28 14:10:01.230 +03:00 [INF] HTTP POST /Account/CreateUser responded 302 in 263.3600 ms
+2026-10-28 14:10:01.243 +03:00 [INF] HTTP GET / responded 200 in 6.4786 ms
+2026-10-28 14:10:03.898 +03:00 [INF] HTTP GET /Account/CreateUser responded 200 in 4.0682 ms
+2026-10-28 14:11:03.567 +03:00 [INF] User MazenHassen@gmail.com created with role Receptionist
+2026-10-28 14:11:03.568 +03:00 [INF] HTTP POST /Account/CreateUser responded 302 in 85.1614 ms
+2026-10-28 14:11:03.585 +03:00 [INF] HTTP GET / responded 200 in 10.0496 ms
+2026-10-28 14:11:09.641 +03:00 [INF] HTTP GET /Account/CreateUser responded 200 in 2.2327 ms
+2026-10-28 14:12:26.014 +03:00 [INF] User MohamedRezk@gmail.com created with role Trainer
+2026-10-28 14:12:26.016 +03:00 [INF] HTTP POST /Account/CreateUser responded 302 in 83.6437 ms
+2026-10-28 14:12:26.029 +03:00 [INF] HTTP GET / responded 200 in 6.4095 ms
+2026-10-28 14:12:29.694 +03:00 [INF] HTTP GET /Account/CreateUser responded 200 in 2.3275 ms
+2026-10-28 14:12:30.942 +03:00 [INF] HTTP GET /Plans responded 200 in 5.2516 ms
+2026-10-28 14:12:32.298 +03:00 [INF] HTTP GET /Trainers responded 200 in 4.2884 ms
+2026-10-28 14:12:33.991 +03:00 [INF] HTTP GET /Attendance responded 200 in 3.4610 ms
+2026-10-28 14:12:35.034 +03:00 [INF] HTTP GET /Attendance responded 200 in 4.2117 ms
+2026-10-28 14:12:35.759 +03:00 [INF] HTTP GET /Payments responded 200 in 48.0730 ms
+2026-10-28 14:12:38.356 +03:00 [INF] HTTP GET /Subscriptions responded 200 in 9.4627 ms
+2026-10-28 14:12:39.915 +03:00 [INF] HTTP GET /Members responded 200 in 6.3068 ms
+2026-10-28 14:12:40.984 +03:00 [INF] HTTP GET /Classes responded 200 in 5.3487 ms
+2026-10-28 14:12:41.825 +03:00 [INF] HTTP GET /Members responded 200 in 11.0255 ms
+2026-10-28 14:12:43.359 +03:00 [INF] HTTP GET /Classes responded 200 in 4.3491 ms
+2026-10-28 14:12:44.147 +03:00 [INF] HTTP GET / responded 200 in 6.2759 ms

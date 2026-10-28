@@ -1,36 +1,32 @@
 ﻿@{
-    // الـ Controller الحالي، عشان نظلل الرابط النشط
     var current = ViewContext.RouteData.Values["controller"]?.ToString();
     string Active(string c) => current == c ? "active" : "";
 }
 
 <nav class="sidebar text-white p-3">
-    <a asp-controller="Home" asp-action="Index" class="d-flex align-items-center text-white text-decoration-none mb-4">
-        <i class="bi bi-heart-pulse fs-3 me-2"></i>
-        <span class="fs-5 fw-bold">Gym System</span>
+    <a asp-controller="Home" asp-action="Index" class="sidebar-brand d-flex align-items-center text-white text-decoration-none mb-4 px-1">
+        <i class="bi bi-lightning-charge-fill me-2"></i>
+        <span>Gym System</span>
     </a>
 
     <ul class="nav nav-pills flex-column gap-1">
-        @* الكل يشوفها: أدمن، استقبال، مدرب *@
         <li><a asp-controller="Home" asp-action="Index" class="nav-link text-white @Active("Home")"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
-        <li><a asp-controller="Attendance" asp-action="Index" class="nav-link text-white @Active("Attendance")"><i class="bi bi-calendar-check me-2"></i>Attendance</a></li>
         <li><a asp-controller="Classes" asp-action="Index" class="nav-link text-white @Active("Classes")"><i class="bi bi-calendar-event me-2"></i>Classes</a></li>
 
-        @* الأدمن والاستقبال بس: الـ Controllers دي محمية بنفس الـ Roles *@
         @if (User.IsInRole("Admin") || User.IsInRole("Receptionist"))
         {
             <li><a asp-controller="Members" asp-action="Index" class="nav-link text-white @Active("Members")"><i class="bi bi-people me-2"></i>Members</a></li>
             <li><a asp-controller="Subscriptions" asp-action="Index" class="nav-link text-white @Active("Subscriptions")"><i class="bi bi-card-checklist me-2"></i>Subscriptions</a></li>
             <li><a asp-controller="Payments" asp-action="Index" class="nav-link text-white @Active("Payments")"><i class="bi bi-cash-coin me-2"></i>Payments</a></li>
+            <li><a asp-controller="Attendance" asp-action="Index" class="nav-link text-white @Active("Attendance")"><i class="bi bi-calendar-check me-2"></i>Attendance</a></li>
             <li><a asp-controller="Trainers" asp-action="Index" class="nav-link text-white @Active("Trainers")"><i class="bi bi-person-badge me-2"></i>Trainers</a></li>
             <li><a asp-controller="Plans" asp-action="Index" class="nav-link text-white @Active("Plans")"><i class="bi bi-tags me-2"></i>Plans</a></li>
         }
 
-        @* الأدمن بس *@
         @if (User.IsInRole("Admin"))
         {
-            <li class="mt-3 small text-uppercase text-white-50 px-3">Admin</li>
-            <li><a asp-controller="Account" asp-action="CreateUser" class="nav-link text-white"><i class="bi bi-person-plus me-2"></i>Add User</a></li>
+            <li class="mt-3 px-3 small text-white-50">Administration</li>
+            <li><a asp-controller="Account" asp-action="CreateUser" class="nav-link text-white @(ViewContext.RouteData.Values["action"]?.ToString() == "CreateUser" ? "active" : "")"><i class="bi bi-person-plus me-2"></i>Add user</a></li>
         }
     </ul>
 </nav>

@@ -1,0 +1,47 @@
+﻿@model ClassViewModel
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label">Class name</label>
+        <input asp-for="Name" class="form-control" placeholder="e.g. Morning Yoga" />
+        <span asp-validation-for="Name" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="TrainerId" class="form-label">Trainer</label>
+        <select asp-for="TrainerId" asp-items="(SelectList)ViewBag.Trainers" class="form-select">
+            <option value="">-- Select trainer --</option>
+        </select>
+        <span asp-validation-for="TrainerId" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="ClassDate" class="form-label">Date</label>
+        <input asp-for="ClassDate" class="form-control" />
+        <span asp-validation-for="ClassDate" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="StartTimeOfDay" class="form-label">From</label>
+        <input asp-for="StartTimeOfDay" class="form-control" />
+        <span asp-validation-for="StartTimeOfDay" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="EndTimeOfDay" class="form-label">To</label>
+        <input asp-for="EndTimeOfDay" class="form-control" />
+        <span asp-validation-for="EndTimeOfDay" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-3">
+        <label asp-for="MaxCapacity" class="form-label">Seats</label>
+        <input asp-for="MaxCapacity" class="form-control" type="number" min="1" />
+        <span asp-validation-for="MaxCapacity" class="text-danger small"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Description" class="form-label">Description (optional)</label>
+        <textarea asp-for="Description" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="Description" class="text-danger small"></span>
+    </div>
+</div>
