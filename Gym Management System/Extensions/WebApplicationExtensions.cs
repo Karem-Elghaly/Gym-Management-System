@@ -21,7 +21,6 @@ public static class WebApplicationExtensions
 
         await DbSeeder.SeedAsync(services, email, password);
 
-        // البيانات التجريبية: في بيئة التطوير فقط، وبعد ما تفعّلها من الإعدادات
         if (app.Environment.IsDevelopment() && app.Configuration.GetValue<bool>("SeedDevData"))
             await DevDataSeeder.SeedAsync(db);
     }

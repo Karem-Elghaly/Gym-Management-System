@@ -9,8 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gym_Management_System.Controllers;
 
-// [Authorize] على مستوى الكنترولر مش لازم، لأن عندنا AuthorizeFilter عام في Program.cs
-// وبنستثني Login بـ [AllowAnonymous]
 public class AccountController : Controller
 {
     private readonly IAccountService _accountService;
@@ -27,17 +25,16 @@ public class AccountController : Controller
         _registerValidator = registerValidator;
     }
 
-    // ===================== Login =====================
 
     [AllowAnonymous]
     [HttpGet]
     public IActionResult Login(string? returnUrl = null)
     {
-        // لو مسجل دخول بالفعل مالوش لازمة يشوف الصفحة
+        
         if (User.Identity?.IsAuthenticated == true)
             return RedirectToAction("Index", "Home");
 
-        // returnUrl: الصفحة اللي كان رايحها قبل ما يتحول للدخول
+       
         ViewData["ReturnUrl"] = returnUrl;
         return View(new LoginViewModel());
     }
@@ -62,22 +59,21 @@ public class AccountController : Controller
         }
         catch (BusinessRuleException ex)
         {
-            // خطأ عام على الفورم كله (مش على حقل معين)
+  
             ModelState.AddModelError(string.Empty, ex.Message);
-            model.Password = string.Empty; // منرجعش الباسورد للمتصفح
+            model.Password = string.Empty; 
             return View(model);
         }
 
-        // Url.IsLocalUrl: حماية من Open Redirect (محدش يبعت رابط لموقع تاني)
+      
         if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
             return LocalRedirect(returnUrl);
 
         return RedirectToAction("Index", "Home");
     }
 
-    // ===================== Logout =====================
-
-    // POST عشان حد ميعملش لك Logout برابط في صفحة تانية (CSRF)
+ 
+   
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
@@ -89,7 +85,7 @@ public class AccountController : Controller
     [AllowAnonymous]
     public IActionResult AccessDenied() => View();
 
-    // ===================== إنشاء مستخدم (Admin فقط) =====================
+   
 
     [Authorize(Roles = UserRoles.Admin)]
     [HttpGet]

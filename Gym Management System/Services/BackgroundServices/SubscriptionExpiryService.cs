@@ -2,14 +2,13 @@
 
 namespace Gym_Management_System.BackgroundServices;
 
-// BackgroundService: كلاس بيشتغل في الخلفية طول عمر التطبيق، من غير ما حد يطلبه
+
 public class SubscriptionExpiryService : BackgroundService
 {
-    // بنشتغل كل 24 ساعة
+    
     private static readonly TimeSpan Interval = TimeSpan.FromHours(24);
 
-    // الـ BackgroundService بيتسجل Singleton، لكن ISubscriptionService Scoped
-    // فمينفعش نحقنها مباشرة، بنحقن المصنع ونعمل Scope بإيدينا كل مرة
+   
     private readonly IServiceScopeFactory _scopeFactory;
     private readonly ILogger<SubscriptionExpiryService> _logger;
 
@@ -21,12 +20,12 @@ public class SubscriptionExpiryService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        // PeriodicTimer: مؤقت بيصحى كل Interval من غير ما نستخدم Task.Delay في لوب
+        
         using var timer = new PeriodicTimer(Interval);
 
         try
         {
-            // do-while: نشتغل أول مرة فوراً عند بداية التطبيق، وبعدين كل 24 ساعة
+            
             do
             {
                 await RunOnceAsync(stoppingToken);
@@ -35,7 +34,7 @@ public class SubscriptionExpiryService : BackgroundService
         }
         catch (OperationCanceledException)
         {
-            // التطبيق بيقفل: ده طبيعي، منعملش حاجة
+          
         }
     }
 
@@ -43,7 +42,7 @@ public class SubscriptionExpiryService : BackgroundService
     {
         try
         {
-            // Scope جديد = DbContext جديد لكل دورة
+            
             using var scope = _scopeFactory.CreateScope();
             var service = scope.ServiceProvider.GetRequiredService<ISubscriptionService>();
 
@@ -52,7 +51,7 @@ public class SubscriptionExpiryService : BackgroundService
         }
         catch (Exception ex) when (!stoppingToken.IsCancellationRequested)
         {
-            // أي خطأ نسجله بس، عشان الـ Job ما يوقعش التطبيق كله
+            
             _logger.LogError(ex, "Expiry job failed");
         }
     }

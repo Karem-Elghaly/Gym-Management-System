@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Gym_Management_System.Controllers;
 
-// القراءة متاحة للثلاثة Roles، والتعديل والحجز بتتحدد على كل Action
+
 [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Receptionist},{UserRoles.Trainer}")]
 public class ClassesController : Controller
 {
@@ -37,20 +37,19 @@ public class ClassesController : Controller
     {
         var model = await _service.GetDetailsAsync(id);
 
-        // قائمة الأعضاء لفورم الحجز (للموظفين بس)
+
         if (User.IsInRole(UserRoles.Admin) || User.IsInRole(UserRoles.Receptionist))
             ViewBag.Members = new SelectList(await _members.GetLookupAsync(), "Id", "Text");
 
         return View(model);
     }
 
-    // ===================== إنشاء / تعديل =====================
 
     [Authorize(Roles = StaffRoles)]
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-        // قيم افتراضية جاهزة: بكرة من 6 المغرب لـ 7، والموظف بيعدلها لو عايز
+       
         var model = new ClassViewModel
         {
             MaxCapacity = 20,
@@ -75,7 +74,7 @@ public class ClassesController : Controller
             return View(model);
         }
 
-        // بعد ما الفاليديشن نجح ندمج التاريخ مع الأوقات قبل ما نبعت للـ Service
+       
         model.ComposeTimes();
 
         try
@@ -84,7 +83,7 @@ public class ClassesController : Controller
         }
         catch (BusinessRuleException ex)
         {
-            // زي: المدرب عنده حصة في نفس الوقت
+            
             ModelState.AddModelError(string.Empty, ex.Message);
             await LoadTrainersAsync(model.TrainerId);
             return View(model);
@@ -99,7 +98,7 @@ public class ClassesController : Controller
     public async Task<IActionResult> Edit(int id)
     {
         var model = await _service.GetForEditAsync(id);
-        // نفصل التاريخ والوقت الكاملين لـ 3 خانات عشان تظهر في الفورم
+  
         model.SplitTimes();
         await LoadTrainersAsync(model.TrainerId);
         return View(model);
@@ -156,7 +155,7 @@ public class ClassesController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // ===================== الحجز =====================
+
 
     [Authorize(Roles = StaffRoles)]
     [HttpPost]

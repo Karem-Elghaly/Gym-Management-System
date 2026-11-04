@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)https://localhost:7001/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gym System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link rel="stylesheet" href="./Dashboard - Gym System_files/css2">
+    <link rel="stylesheet" href="./Dashboard - Gym System_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Dashboard - Gym System_files/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./Dashboard - Gym System_files/site.css">
+</head>
+<body>
+    <div b-7ds5qnlf71="" class="d-flex">
+        
+<nav class="sidebar text-white p-3">
+    <a class="sidebar-brand d-flex align-items-center text-white text-decoration-none mb-4 px-1" href="https://localhost:7001/">
+        <i class="bi bi-lightning-charge-fill me-2"></i>
+        <span>Gym System</span>
+    </a>
+
+    <ul class="nav nav-pills flex-column gap-1">
+        <li><a class="nav-link text-white active" href="https://localhost:7001/"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+        <li><a class="nav-link text-white " href="https://localhost:7001/Classes"><i class="bi bi-calendar-event me-2"></i>Classes</a></li>
+
+            <li><a class="nav-link text-white " href="https://localhost:7001/Members"><i class="bi bi-people me-2"></i>Members</a></li>
+            <li><a class="nav-link text-white " href="https://localhost:7001/Subscriptions"><i class="bi bi-card-checklist me-2"></i>Subscriptions</a></li>
+            <li><a class="nav-link text-white " href="https://localhost:7001/Payments"><i class="bi bi-cash-coin me-2"></i>Payments</a></li>
+            <li><a class="nav-link text-white " href="https://localhost:7001/Attendance"><i class="bi bi-calendar-check me-2"></i>Attendance</a></li>
+            <li><a class="nav-link text-white " href="https://localhost:7001/Trainers"><i class="bi bi-person-badge me-2"></i>Trainers</a></li>
+            <li><a class="nav-link text-white " href="https://localhost:7001/Plans"><i class="bi bi-tags me-2"></i>Plans</a></li>
+
+            <li class="mt-3 px-3 small text-white-50">Administration</li>
+            <li><a class="nav-link text-white " href="https://localhost:7001/Account/CreateUser"><i class="bi bi-person-plus me-2"></i>Add user</a></li>
+    </ul>
+</nav>
+
+        <div b-7ds5qnlf71="" class="main-content flex-grow-1">
+            <header class="topbar bg-white border-bottom px-4 py-2 d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Dashboard</h5>
+
+    <div class="d-flex align-items-center gap-3">
+        <span class="text-muted small"><i class="bi bi-person-circle me-1"></i>admin@gym.com</span>
+
+        <form method="post" class="mb-0" action="https://localhost:7001/Account/Logout">
+            <button type="submit" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-box-arrow-right me-1"></i>Logout
+            </button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JsSZ3TNsOJIuc4hxpgBF20PdfOg5SxouWGxmRBZ5yjjoJMUBJORU0f4c_xn48E-CUaDxDiFL_ciKyf_CxFluLy-4LF4JYfgBCO0d0eoAu0cXrHjA6eAGsSHJ1B530MAyLRN3RelpDskmeKsKjlH13S589a6BUyUJpKfTV6cgCkOR4ffEkd9DDxYmbdS_Wrv5Q"></form>
+    </div>
+</header>
+
+            <main b-7ds5qnlf71="" class="p-4">
+                
+
+                
+<div class="stat-strip mb-4">
+    <div class="stat-cell" style="--tone: var(--ember)">
+        <div class="stat-label">Members</div>
+        <div class="stat-value">14</div>
+    </div>
+    <div class="stat-cell" style="--tone: var(--bs-success)">
+        <div class="stat-label">Active subscriptions</div>
+        <div class="stat-value">8</div>
+    </div>
+    <div class="stat-cell" style="--tone: var(--bs-warning)">
+        <div class="stat-label">Ending within 7 days</div>
+        <div class="stat-value">3</div>
+    </div>
+    <div class="stat-cell" style="--tone: var(--bs-info)">
+        <div class="stat-label">Checked in today</div>
+        <div class="stat-value">0</div>
+    </div>
+    <div class="stat-cell" style="--tone: var(--bs-secondary)">
+        <div class="stat-label">Upcoming classes</div>
+        <div class="stat-value">2</div>
+    </div>
+    <div class="stat-cell" style="--tone: var(--graphite)">
+        <div class="stat-label">Revenue this month</div>
+        <div class="stat-value">4,400<span class="stat-unit">EGP</span></div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">Subscriptions ending soon</div>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr><th>Member</th><th>Phone</th><th>Plan</th><th>Ends</th><th>Days left</th><th></th></tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td class="fw-semibold">Mohamed Ali</td>
+                        <td>01010000002</td>
+                        <td>Monthly</td>
+                        <td>2026-10-31</td>
+                        <td><span class="badge bg-danger">2</span></td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" href="https://localhost:7001/Subscriptions/Renew/2">Renew</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-semibold">Sara Mahmoud</td>
+                        <td>01110000003</td>
+                        <td>Quarterly</td>
+                        <td>2026-11-03</td>
+                        <td><span class="badge bg-warning text-dark">5</span></td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" href="https://localhost:7001/Subscriptions/Renew/3">Renew</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-semibold">Zeko</td>
+                        <td>01264897535</td>
+                        <td>Weekly</td>
+                        <td>2026-11-04</td>
+                        <td><span class="badge bg-warning text-dark">6</span></td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" href="https://localhost:7001/Subscriptions/Renew/9">Renew</a>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            </main>
+        </div>
+    </div>
+
+    <script src="./Dashboard - Gym System_files/bootstrap.bundle.min.js.download"></script>
+    
+
+<!-- Visual Studio Browser Link -->
+<script type="text/javascript" src="./Dashboard - Gym System_files/browserLink" async="async" id="__browserLink_initializationData" data-requestid="7959f2c121c0462f8bb7d75ec0d4774c" data-requestmappingfromserver="false" data-connecturl="http://localhost:61311/5fbd5bbde3d34cf8aeeeee8b3ad08845/browserLink"></script>
+<!-- End Browser Link -->
+<script src="./Dashboard - Gym System_files/aspnetcore-browser-refresh.js.download"></script>
+</body></html>

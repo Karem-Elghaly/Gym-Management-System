@@ -15,7 +15,7 @@ namespace Gym_Management_System.Controllers;
 public class SubscriptionsController : Controller
 {
     private readonly ISubscriptionService _service;
-    // محتاجينهم عشان نملا الـ Dropdowns (اختيار عضو وباقة)
+
     private readonly IMemberService _members;
     private readonly IPlanService _plans;
     private readonly IValidator<SubscriptionCreateViewModel> _createValidator;
@@ -35,9 +35,7 @@ public class SubscriptionsController : Controller
         _renewValidator = renewValidator;
     }
 
-    // ===================== القائمة =====================
-
-    // status اختياري: لو null يعرض كل الحالات. الاتنين من الـ URL
+   
     public async Task<IActionResult> Index(
         [FromQuery] SubscriptionStatus? status, [FromQuery] PaginationParams paging)
     {
@@ -46,14 +44,12 @@ public class SubscriptionsController : Controller
         return View(result);
     }
 
-    // ===================== التفاصيل =====================
+ 
 
     public async Task<IActionResult> Details(int id)
         => View(await _service.GetDetailsAsync(id));
 
-    // ===================== الإنشاء =====================
-
-    // memberId اختياري: لما نيجي من صفحة العضو يكون العضو مختار مسبقاً
+   
     [HttpGet]
     public async Task<IActionResult> Create(int? memberId = null)
     {
@@ -82,14 +78,14 @@ public class SubscriptionsController : Controller
         }
         catch (BusinessRuleException ex)
         {
-            // خطأ عام يظهر في أعلى الفورم (زي: العضو عنده اشتراك نشط)
+            
             ModelState.AddModelError(string.Empty, ex.Message);
             await LoadLookupsAsync(model.MemberId, model.PlanId);
             return View(model);
         }
     }
 
-    // ===================== التجديد =====================
+   
 
     [HttpGet]
     public async Task<IActionResult> Renew(int id)
@@ -127,8 +123,6 @@ public class SubscriptionsController : Controller
         }
     }
 
-    // ===================== تجميد / فك / إلغاء =====================
-    // كلهم POST لأنهم بيغيّروا بيانات، وبنرجع لصفحة التفاصيل بعد كل واحد
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -140,16 +134,13 @@ public class SubscriptionsController : Controller
     public Task<IActionResult> Unfreeze(int id)
         => RunAsync(id, () => _service.UnfreezeAsync(id), "Subscription unfrozen and extended.");
 
-    // الإلغاء للأدمن بس (قرار حساس)
     [Authorize(Roles = UserRoles.Admin)]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public Task<IActionResult> Cancel(int id)
         => RunAsync(id, () => _service.CancelAsync(id), "Subscription cancelled.");
 
-    // ============ دوال مساعدة ============
-
-    // بتنفذ عملية وتعرض نجاح أو رسالة قاعدة الشغل، من غير تكرار try/catch في كل Action
+    
     private async Task<IActionResult> RunAsync(int id, Func<Task> action, string successMessage)
     {
         try
@@ -165,7 +156,7 @@ public class SubscriptionsController : Controller
         return RedirectToAction(nameof(Details), new { id });
     }
 
-    // SelectList: القائمة المنسدلة. Id هو القيمة، Text هو النص، والأخير هو العنصر المختار
+   
     private async Task LoadLookupsAsync(int? memberId, int? planId)
     {
         ViewBag.Members = new SelectList(await _members.GetLookupAsync(), "Id", "Text", memberId);

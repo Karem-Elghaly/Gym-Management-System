@@ -23,11 +23,11 @@ public class PaymentsController : Controller
         _validator = validator;
     }
 
-    // سجل المدفوعات بترقيم
+    
     public async Task<IActionResult> Index([FromQuery] PaginationParams paging)
         => View(await _service.GetPagedAsync(paging));
 
-    // subscriptionId اختياري: لما نيجي من صفحة الاشتراك يكون مختار مسبقاً
+
     [HttpGet]
     public async Task<IActionResult> Create(int? subscriptionId = null)
     {
@@ -54,7 +54,7 @@ public class PaymentsController : Controller
         }
         catch (BusinessRuleException ex)
         {
-            // زي: المبلغ أكبر من المتبقي
+            
             ModelState.AddModelError(nameof(model.Amount), ex.Message);
             await LoadLookupsAsync(model.SubscriptionId);
             return View(model);
@@ -64,7 +64,7 @@ public class PaymentsController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // قائمة الاشتراكات اللي لسه عليها متبقي
+
     private async Task LoadLookupsAsync(int? subscriptionId)
         => ViewBag.Subscriptions = new SelectList(
             await _service.GetPayableSubscriptionsAsync(), "Id", "Text", subscriptionId);

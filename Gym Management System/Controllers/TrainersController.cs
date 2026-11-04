@@ -79,7 +79,7 @@ public class TrainersController : Controller
         }
         catch (BusinessRuleException ex)
         {
-            // زي: المدرب عنده حصص قادمة
+        
             TempData["Error"] = ex.Message;
         }
 

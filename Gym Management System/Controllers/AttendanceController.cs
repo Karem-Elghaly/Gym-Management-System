@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gym_Management_System.Controllers;
 
-// تسجيل الحضور شغل الاستقبال والأدمن
+
 [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Receptionist}")]
 public class AttendanceController : Controller
 {
@@ -17,7 +17,7 @@ public class AttendanceController : Controller
 
     public AttendanceController(IAttendanceService service) => _service = service;
 
-    // date اختياري، الافتراضي النهاردة
+  
     public async Task<IActionResult> Index(DateOnly? date = null)
     {
         var day = date ?? DateOnly.FromDateTime(DateTime.Now);

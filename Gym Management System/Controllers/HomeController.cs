@@ -10,7 +10,7 @@ namespace Gym_Management_System.Controllers
     {
         private readonly IDashboardService _dashboard;
 
-        // IDashboardService بييجي من الـ DI (اتسجل في AddBllServices)
+       
         public HomeController(IDashboardService dashboard) => _dashboard = dashboard;
 
         public async Task<IActionResult> Index()

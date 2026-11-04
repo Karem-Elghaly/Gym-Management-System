@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gym_Management_System.Controllers;
 
-// الباقات: الأدمن وموظف الاستقبال يشوفوا ويضيفوا ويعدلوا، والحذف للأدمن بس
 [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Receptionist}")]
 public class PlansController : Controller
 {
@@ -44,7 +43,7 @@ public class PlansController : Controller
         }
         catch (BusinessRuleException ex)
         {
-            // التكرار في الاسم: بنعرض الرسالة تحت خانة الاسم
+          
             ModelState.AddModelError(nameof(model.Name), ex.Message);
             return View(model);
         }
@@ -83,7 +82,6 @@ public class PlansController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    // تفعيل/إيقاف: POST لأنه بيغيّر بيانات
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Toggle(int id)
